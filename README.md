@@ -1,6 +1,6 @@
 # Group Project 3: A Bite of Peer-to-Peer
 
-**CECS 327 – Intro to Networks and Distributed Computing**
+## CECS 327 – Intro to Networks and Distributed Computing**
 
 ## Overview
 
@@ -25,16 +25,6 @@ A containerized Peer-to-Peer (P2P) network consisting of 50 nodes, each running 
      └──────────┘       └──────────┘
          ... (up to 50 nodes) ...
 ```
-
-### How It Works
-
-1. **Startup**: Each node generates a unique ID and starts a Flask HTTP server.
-2. **Registration**: On startup, each node registers its ID and URL with the bootstrap node.
-3. **Peer Discovery**: Nodes periodically fetch the peer list from:
-   - The bootstrap node (initial discovery)
-   - Other known peers (gossip protocol — decentralized discovery)
-4. **Messaging**: Nodes communicate directly via HTTP POST to `/message`.
-5. **Independence**: After initial discovery, the bootstrap is not needed for communication.
 
 ## Prerequisites
 
@@ -186,10 +176,5 @@ p2p-system/
 └── README.md               # This file
 ```
 
-## Design Decisions
 
-- **Flask** was chosen for simplicity — each node runs a lightweight HTTP server.
-- **Gossip protocol**: Nodes don't just rely on the bootstrap; they also ask peers for their peer lists, enabling decentralized discovery.
-- **Threading**: Background discovery runs in a daemon thread, separate from the Flask server.
-- **Docker networking**: All containers share a `p2p-net` bridge network, allowing hostname-based communication (e.g., `http://node-1:5000`).
 
