@@ -164,7 +164,7 @@ docker-compose up -d --build
 ## File Structure
 
 ```
-p2p-system/
+CECS327H_Project3/
 ├── bootstrap.py            # Bootstrap node (central registry)
 ├── bootstrap.Dockerfile    # Dockerfile for bootstrap
 ├── node.py                 # P2P node (peer application)
