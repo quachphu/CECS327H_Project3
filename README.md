@@ -1,6 +1,6 @@
 # Group Project 3: A Bite of Peer-to-Peer
 
-## CECS 327 – Intro to Networks and Distributed Computing**
+## CECS 327 – Intro to Networks and Distributed Computing
 
 ## Overview
 
