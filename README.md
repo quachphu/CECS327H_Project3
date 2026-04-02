@@ -1,10 +1,6 @@
 # Group Project 3: A Bite of Peer-to-Peer
 
-<<<<<<< HEAD
-## CECS 327 – Intro to Networks and Distributed Computing
-=======
 **CECS 327 – Intro to Networks and Distributed Computing**
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
 
 ## Overview
 
@@ -30,8 +26,6 @@ A containerized Peer-to-Peer (P2P) network consisting of 50 nodes, each running 
          ... (up to 50 nodes) ...
 ```
 
-<<<<<<< HEAD
-=======
 ### How It Works
 
 1. **Startup**: Each node generates a unique ID and starts a Flask HTTP server.
@@ -42,7 +36,6 @@ A containerized Peer-to-Peer (P2P) network consisting of 50 nodes, each running 
 4. **Messaging**: Nodes communicate directly via HTTP POST to `/message`.
 5. **Independence**: After initial discovery, the bootstrap is not needed for communication.
 
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
 ## Prerequisites
 
 - **Docker** (v20+)
@@ -117,10 +110,7 @@ python test_network.py 50
 ```
 
 The test script runs 8 tests:
-<<<<<<< HEAD
-=======
 
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
 1. Bootstrap health check
 2. Individual node verification
 3. Direct messaging between node pairs
@@ -163,26 +153,6 @@ docker-compose up -d --build
 
 ### Bootstrap Node (port 5000)
 
-<<<<<<< HEAD
-| Endpoint           | Method | Description                     |
-|-------------------|--------|---------------------------------|
-| `/`               | GET    | Health check                    |
-| `/register`       | POST   | Register a peer `{node_id, url}`|
-| `/peers`          | GET    | List all registered peer URLs   |
-| `/peers/detailed` | GET    | List peers with IDs             |
-
-### Peer Nodes (ports 5001–5050)
-
-| Endpoint     | Method | Description                             |
-|-------------|--------|-----------------------------------------|
-| `/`         | GET    | Health check + node info                |
-| `/register` | POST   | Direct peer registration `{url}`        |
-| `/peers`    | GET    | This node's known peer list             |
-| `/message`  | POST   | Receive a message `{sender, msg}`       |
-| `/messages` | GET    | View all received messages              |
-| `/send`     | POST   | Send msg to a target `{target, msg}`    |
-| `/broadcast`| POST   | Broadcast msg to all peers `{msg}`      |
-=======
 | Endpoint          | Method | Description                      |
 | ----------------- | ------ | -------------------------------- |
 | `/`               | GET    | Health check                     |
@@ -201,38 +171,32 @@ docker-compose up -d --build
 | `/messages`  | GET    | View all received messages           |
 | `/send`      | POST   | Send msg to a target `{target, msg}` |
 | `/broadcast` | POST   | Broadcast msg to all peers `{msg}`   |
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
 
 ## File Structure
 
 ```
-<<<<<<< HEAD
-CECS327H_Project3/
-=======
 p2p-system/
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
 ├── bootstrap.py            # Bootstrap node (central registry)
 ├── bootstrap.Dockerfile    # Dockerfile for bootstrap
 ├── node.py                 # P2P node (peer application)
 ├── Dockerfile              # Dockerfile for peer nodes
 ├── docker-compose.yml      # Compose file (50 nodes + bootstrap)
 ├── generate_compose.py     # Script to regenerate compose with N nodes
-<<<<<<< HEAD
 ├── test_network.py         # Comprehensive test suite
-=======
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
 ├── requirements.txt        # Python dependencies
 └── README.md               # This file
 ```
 
-<<<<<<< HEAD
-
-
-=======
 ## Design Decisions
 
 - **Flask** was chosen for simplicity — each node runs a lightweight HTTP server.
 - **Gossip protocol**: Nodes don't just rely on the bootstrap; they also ask peers for their peer lists, enabling decentralized discovery.
 - **Threading**: Background discovery runs in a daemon thread, separate from the Flask server.
 - **Docker networking**: All containers share a `p2p-net` bridge network, allowing hostname-based communication (e.g., `http://node-1:5000`).
->>>>>>> 4544863 (implementing phase 1, 2 and 3)
+
+## Team Contributions
+
+| Member | Contribution                  |
+| ------ | ----------------------------- |
+| [Name] | [Description of contribution] |
+| [Name] | [Description of contribution] |
