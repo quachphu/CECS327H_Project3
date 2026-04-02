@@ -99,28 +99,8 @@ curl -X POST http://localhost:5001/broadcast \
   -d '{"msg": "Hello everyone from Node-1!"}'
 ```
 
-### 5. Run the Full Test Suite
 
-```bash
-# Install test dependencies (host machine)
-pip install requests
-
-# Run comprehensive tests across all 50 nodes
-python test_network.py 50
-```
-
-The test script runs 8 tests:
-
-1. Bootstrap health check
-2. Individual node verification
-3. Direct messaging between node pairs
-4. Broadcast from one node to all peers
-5. Chain messaging across 20 nodes
-6. Random messaging (30 random node pairs)
-7. Message log verification
-8. Gossip-based peer discovery verification
-
-### 6. Check Logs
+### 5. Check Logs
 
 ```bash
 # View bootstrap logs
@@ -133,7 +113,7 @@ docker logs node-1
 docker logs -f node-5
 ```
 
-### 7. Shut Down
+### 6. Shut Down
 
 ```bash
 docker-compose down
@@ -182,7 +162,6 @@ p2p-system/
 ├── Dockerfile              # Dockerfile for peer nodes
 ├── docker-compose.yml      # Compose file (50 nodes + bootstrap)
 ├── generate_compose.py     # Script to regenerate compose with N nodes
-├── test_network.py         # Comprehensive test suite
 ├── requirements.txt        # Python dependencies
 └── README.md               # This file
 ```
@@ -194,9 +173,3 @@ p2p-system/
 - **Threading**: Background discovery runs in a daemon thread, separate from the Flask server.
 - **Docker networking**: All containers share a `p2p-net` bridge network, allowing hostname-based communication (e.g., `http://node-1:5000`).
 
-## Team Contributions
-
-| Member | Contribution                  |
-| ------ | ----------------------------- |
-| [Name] | [Description of contribution] |
-| [Name] | [Description of contribution] |
