@@ -64,37 +64,37 @@ docker ps | head -20
 
 ```bash
 # Check bootstrap is running
-curl http://localhost:5000/
+curl http://localhost:8000/
 
 # See all registered peers
-curl http://localhost:5000/peers
+curl http://localhost:8000/peers
 ```
 
 ### 3. Verify Individual Nodes
 
 ```bash
 # Check node-1
-curl http://localhost:5001/
+curl http://localhost:8001/
 
 # Check node-1's peer list
-curl http://localhost:5001/peers
+curl http://localhost:8001/peers
 ```
 
 ### 4. Send Messages Between Nodes
 
 ```bash
 # Send message from Node2 to Node1
-curl -X POST http://localhost:5001/message \
+curl -X POST http://localhost:8001/message \
   -H "Content-Type: application/json" \
   -d '{"sender": "node-2", "msg": "Hello Node1!"}'
 
 # Send message from Node1 to Node2
-curl -X POST http://localhost:5002/message \
+curl -X POST http://localhost:8002/message \
   -H "Content-Type: application/json" \
   -d '{"sender": "node-1", "msg": "Hey Node2, how are you?"}'
 
 # Broadcast from Node-1 to all peers
-curl -X POST http://localhost:5001/broadcast \
+curl -X POST http://localhost:8001/broadcast \
   -H "Content-Type: application/json" \
   -d '{"msg": "Hello everyone from Node-1!"}'
 ```
@@ -131,7 +131,7 @@ docker-compose up -d --build
 
 ## API Endpoints
 
-### Bootstrap Node (port 5000)
+### Bootstrap Node (port 8000)
 
 | Endpoint          | Method | Description                      |
 | ----------------- | ------ | -------------------------------- |
@@ -140,7 +140,7 @@ docker-compose up -d --build
 | `/peers`          | GET    | List all registered peer URLs    |
 | `/peers/detailed` | GET    | List peers with IDs              |
 
-### Peer Nodes (ports 5001–5050)
+### Peer Nodes (ports 8001–8050)
 
 | Endpoint     | Method | Description                          |
 | ------------ | ------ | ------------------------------------ |
@@ -171,5 +171,5 @@ p2p-system/
 - **Flask** was chosen for simplicity — each node runs a lightweight HTTP server.
 - **Gossip protocol**: Nodes don't just rely on the bootstrap; they also ask peers for their peer lists, enabling decentralized discovery.
 - **Threading**: Background discovery runs in a daemon thread, separate from the Flask server.
-- **Docker networking**: All containers share a `p2p-net` bridge network, allowing hostname-based communication (e.g., `http://node-1:5000`).
+- **Docker networking**: All containers share a `p2p-net` bridge network, allowing hostname-based communication (e.g., `http://node-1:8000`).
 
